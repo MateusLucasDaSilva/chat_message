@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "797529267587",
+    "project_id": "chat-message-de2bc",
+    "storage_bucket": "chat-message-de2bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797529267587:android:0647d7a965d558c4552ab6",
+        "android_client_info": {
+          "package_name": "com.example.chat_message"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACwC7R2U2_zMWQl8jJFmJKt6HDINxJSdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
