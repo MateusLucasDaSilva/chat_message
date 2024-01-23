@@ -1,4 +1,5 @@
 import 'package:chat_message/app/services/auth/auth_service.dart';
+import 'package:chat_message/app/services/chat/chat_service.dart';
 import 'package:chat_message/app/views/pages/init/controller/init_controller.dart';
 import 'package:chat_message/app/views/pages/init/init_page.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,10 @@ class App extends StatelessWidget {
           create: (context) => InitController(),
         ),
         ChangeNotifierProvider<AuthService>(
-          create: (context) => AuthService(),
+          create: (context) => AuthService.instance,
+        ),
+        ChangeNotifierProvider<ChatService>(
+          create: (context) => ChatService(),
         ),
       ],
       child: MaterialApp(
