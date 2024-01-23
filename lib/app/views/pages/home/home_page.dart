@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
         children: users
             .map((e) => ListTile(
                   title: Text(e.uid),
+                  subtitle: Text(e.email ?? ''),
                 ))
             .toList(),
       ),

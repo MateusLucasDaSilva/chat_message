@@ -9,9 +9,8 @@ class UsersRepository {
       final QuerySnapshot<Map<String, dynamic>> result =
           await _instance.collection('users').get();
 
-      final List<UserModel> listUsers = result.docs
-          .map((user) => UserModel.fromJson(user.data().toString()))
-          .toList();
+      final List<UserModel> listUsers =
+          result.docs.map((user) => UserModel.fromJson(user.data())).toList();
 
       return listUsers;
     } catch (e) {
