@@ -1,6 +1,6 @@
+import 'package:chat_message/app/models/message_model.dart';
 import 'package:chat_message/app/services/auth/auth_service.dart';
 import 'package:chat_message/app/services/chat/chat_service.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +17,11 @@ class MessagesPage extends StatefulWidget {
 
 class _MessagesPageState extends State<MessagesPage> {
   final inputEC = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -47,7 +52,7 @@ class _MessagesPageState extends State<MessagesPage> {
   }
 
   Widget _buildMessagesWidget() {
-    return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+    return StreamBuilder<List<MessageModel>>(
       stream: context.read<ChatService>().getMessages(widget.uidReceiver),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
@@ -61,27 +66,20 @@ class _MessagesPageState extends State<MessagesPage> {
         return Expanded(
           child: ListView(
             reverse: true,
-            children:
-                snapshot.data!.docs.map((e) => _buildMessageItem(e)).toList(),
+            children: snapshot.data!.map((e) => _buildMessageItem(e)).toList(),
           ),
         );
       },
     );
   }
 
-  Widget _buildMessageItem(DocumentSnapshot documentSnapshot) {
-    final Map<String, dynamic> data =
-        documentSnapshot.data() as Map<String, dynamic>;
-
-    final String email = data['email'];
-    final String message = data['message'];
-
+  Widget _buildMessageItem(MessageModel message) {
     final TextAlign textAlign =
-        AuthService.instance.user.value!.uid == data['senderId']
+        AuthService.instance.user.value!.uid == message.senderId
             ? TextAlign.right
             : TextAlign.left;
     return Text(
-      '$email \n $message',
+      '${message.email} \n ${message.message}',
       textAlign: textAlign,
     );
   }
