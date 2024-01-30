@@ -1,6 +1,6 @@
-import 'package:chat_message/app/models/message_model.dart';
-import 'package:chat_message/app/services/auth/auth_service.dart';
 import 'package:chat_message/app/services/chat/chat_service.dart';
+import 'package:chat_message/app/views/pages/messages/widgets/input_message_widget.dart';
+import 'package:chat_message/app/views/pages/messages/widgets/list_messages_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -40,60 +40,17 @@ class _MessagesPageState extends State<MessagesPage> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            _buildMessagesWidget(),
-            _buildInputWidget(),
+            ListMessagesWidget(uidReceiver: widget.uidReceiver),
+            InputMessageWidget(
+              onTapSend: _sendMessage,
+              textEditingController: inputEC,
+            ),
             const SizedBox(
               height: 20,
             ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildMessagesWidget() {
-    return StreamBuilder<List<MessageModel>>(
-      stream: context.read<ChatService>().getMessages(widget.uidReceiver),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Text('Ocorreu um Erro!');
-        }
-
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        }
-
-        return Expanded(
-          child: ListView(
-            reverse: true,
-            children: snapshot.data!.map((e) => _buildMessageItem(e)).toList(),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _buildMessageItem(MessageModel message) {
-    final TextAlign textAlign =
-        AuthService.instance.user.value!.uid == message.senderId
-            ? TextAlign.right
-            : TextAlign.left;
-    return Text(
-      '${message.email} \n ${message.message}',
-      textAlign: textAlign,
-    );
-  }
-
-  Widget _buildInputWidget() {
-    return Row(
-      children: [
-        Expanded(
-          child: TextFormField(
-            controller: inputEC,
-          ),
-        ),
-        IconButton(onPressed: _sendMessage, icon: const Icon(Icons.send_sharp))
-      ],
     );
   }
 

@@ -2,7 +2,7 @@ import 'package:chat_message/app/models/user_model.dart';
 import 'package:chat_message/app/repositories/users/users_repository.dart';
 import 'package:chat_message/app/services/auth/auth_service.dart';
 import 'package:chat_message/app/services/chat/chat_service.dart';
-import 'package:chat_message/app/views/pages/messages/messages_page.dart';
+import 'package:chat_message/app/views/pages/home/widgets/user_tile_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,45 +47,16 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Chat de Mensagens'),
         actions: [
           IconButton(
-              onPressed: () {
-                AuthService.instance.logout();
-              },
+              onPressed: () => AuthService.instance.logout(),
               icon: const Icon(Icons.logout))
         ],
       ),
-      body: Column(
-        children: users
-            .map((e) => ListTile(
-                  title: Text(e.uid == AuthService.instance.user.value!.uid
-                      ? '${e.uid} (Eu)'
-                      : e.uid),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MessagesPage(
-                              email: e.email ?? '', uidReceiver: e.uid),
-                        ));
-                  },
-                  subtitle: Text(e.email ?? ''),
-                  trailing: listenChatMap[e.uid] != null
-                      ? StreamBuilder<bool>(
-                          stream: listenChatMap[e.uid],
-                          builder: (context, snapshot) {
-                            if (snapshot.data != null && snapshot.data!) {
-                              return Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(400),
-                                    color: Colors.red),
-                              );
-                            }
-                            return const SizedBox();
-                          })
-                      : null,
-                ))
-            .toList(),
+      body: ListView.builder(
+        itemCount: users.length,
+        itemBuilder: (context, index) => UserTileWidget(
+          listenChatMap: listenChatMap,
+          user: users[index],
+        ),
       ),
     );
   }
