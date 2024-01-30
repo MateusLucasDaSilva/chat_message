@@ -23,13 +23,13 @@
 <h2>🛠️ Funcionalidades e Tecnologias Estudadas</h2>
 
 <p>
-Firebase Cloud Firestore:
+<h5>Firebase Cloud Firestore:</h5>
 
 -Armazenamento de Mensagens: Utilizando o Firestore para armazenar e recuperar mensagens em tempo real. Cada mensagem pode conter informações como remetente, conteúdo, data e hora.
 
 -Coleções e Documentos: Organizando as mensagens em coleções e documentos para facilitar a consulta e a recuperação eficiente de dados.
 
-Firebase Auth:
+<h4>Firebase Auth:</h4>
 
 -Autenticação de Usuários: Utilizando o Firebase Auth para autenticar usuários no aplicativo de chat. Isso garante que apenas usuários autenticados possam enviar e receber mensagens, protegendo a privacidade e a segurança da comunicação.
 
