@@ -1,6 +1,8 @@
 # chat_message
 
 A new Flutter project.
+<img width="392" alt="Captura de Tela 2024-01-30 às 09 57 04" src="https://github.com/MateusLucasDaSilva/chat_message/assets/101568163/9363571a-c937-4a85-a824-59916005f841">
+<img width="411" alt="Captura de Tela 2024-01-30 às 10 40 36" src="https://github.com/MateusLucasDaSilva/chat_message/assets/101568163/dfa3c0c7-595e-49f7-8683-07ba75ae8690">
 
 ## Getting Started
 
