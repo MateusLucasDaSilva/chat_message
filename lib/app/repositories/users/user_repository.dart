@@ -2,7 +2,7 @@ import 'package:chat_message/app/models/user_model.dart';
 import 'package:chat_message/app/repositories/users/i_user_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class UsersRepository implements IUserRepository {
+class UserRepository implements IUserRepository {
   final CollectionReference<Map<String, dynamic>> _collectionUsers =
       FirebaseFirestore.instance.collection('users');
 

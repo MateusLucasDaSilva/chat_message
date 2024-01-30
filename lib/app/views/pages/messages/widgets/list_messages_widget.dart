@@ -1,5 +1,5 @@
 import 'package:chat_message/app/models/message_model.dart';
-import 'package:chat_message/app/services/chat/chat_service.dart';
+import 'package:chat_message/app/services/chat/i_chat_service.dart';
 import 'package:chat_message/app/views/pages/messages/widgets/message_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +14,7 @@ class ListMessagesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<MessageModel>>(
-      stream: context.read<ChatService>().getMessages(uidReceiver),
+      stream: context.read<IChatService>().getMessages(uidReceiver),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return const Expanded(

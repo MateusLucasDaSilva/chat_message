@@ -1,4 +1,4 @@
-import 'package:chat_message/app/services/chat/chat_service.dart';
+import 'package:chat_message/app/services/chat/i_chat_service.dart';
 import 'package:chat_message/app/views/pages/messages/widgets/input_message_widget.dart';
 import 'package:chat_message/app/views/pages/messages/widgets/list_messages_widget.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +8,11 @@ class MessagesPage extends StatefulWidget {
   final String email;
   final String uidReceiver;
 
-  const MessagesPage(
-      {super.key, required this.email, required this.uidReceiver});
+  const MessagesPage({
+    super.key,
+    required this.email,
+    required this.uidReceiver,
+  });
 
   @override
   State<MessagesPage> createState() => _MessagesPageState();
@@ -42,7 +45,7 @@ class _MessagesPageState extends State<MessagesPage> {
           children: [
             ListMessagesWidget(uidReceiver: widget.uidReceiver),
             InputMessageWidget(
-              onTapSend: _sendMessage,
+              onTapSend: () => _sendMessage(context),
               textEditingController: inputEC,
             ),
             const SizedBox(
@@ -54,9 +57,9 @@ class _MessagesPageState extends State<MessagesPage> {
     );
   }
 
-  void _sendMessage() {
+  void _sendMessage(BuildContext context) {
     if (inputEC.text.isEmpty) return;
-    context.read<ChatService>().sendMessage(inputEC.text, widget.uidReceiver);
+    context.read<IChatService>().sendMessage(inputEC.text, widget.uidReceiver);
     inputEC.clear();
   }
 }

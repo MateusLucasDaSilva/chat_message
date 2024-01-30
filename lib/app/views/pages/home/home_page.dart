@@ -1,9 +1,8 @@
-import 'package:chat_message/app/models/user_model.dart';
-import 'package:chat_message/app/repositories/users/users_repository.dart';
 import 'package:chat_message/app/services/auth/auth_service.dart';
-import 'package:chat_message/app/services/chat/chat_service.dart';
+import 'package:chat_message/app/views/pages/home/controller/home_controller.dart';
 import 'package:chat_message/app/views/pages/home/widgets/user_tile_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,31 +12,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final repository = UsersRepository();
-  final ChatService chat = ChatService();
-
-  List<UserModel> users = [];
-  Map<String, Stream<bool>> listenChatMap = {};
+  late HomeController _controller;
 
   @override
   void initState() {
     super.initState();
-    getUsers();
-  }
-
-  Future<void> getUsers() async {
-    final result = await repository.getUsers();
-    getListeners(result);
-    setState(() {
-      users = result;
-    });
-  }
-
-  void getListeners(List<UserModel> result) {
-    for (var e in result) {
-      final result = chat.listenChatRoom(receiverId: e.uid);
-      listenChatMap[e.uid] = result;
-    }
+    _controller = context.read<HomeController>();
+    _controller.getUsers();
   }
 
   @override
@@ -51,11 +32,14 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.logout))
         ],
       ),
-      body: ListView.builder(
-        itemCount: users.length,
-        itemBuilder: (context, index) => UserTileWidget(
-          listenChatMap: listenChatMap,
-          user: users[index],
+      body: ListenableBuilder(
+        listenable: _controller,
+        builder: (context, child) => ListView.builder(
+          itemCount: _controller.users.length,
+          itemBuilder: (context, index) => UserTileWidget(
+            listenChatMap: _controller.listenChatMap,
+            user: _controller.users[index],
+          ),
         ),
       ),
     );
