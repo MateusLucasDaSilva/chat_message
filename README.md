@@ -1,18 +1,79 @@
-# chat_message
+<h1 align="center">Chat Message</h1>
 
-A new Flutter project.
 <img width="392" alt="Captura de Tela 2024-01-30 às 09 57 04" src="https://github.com/MateusLucasDaSilva/chat_message/assets/101568163/9363571a-c937-4a85-a824-59916005f841">
 <img width="411" alt="Captura de Tela 2024-01-30 às 10 40 36" src="https://github.com/MateusLucasDaSilva/chat_message/assets/101568163/dfa3c0c7-595e-49f7-8683-07ba75ae8690">
 
-## Getting Started
+<h2>📖 Sobre</h2>
+<p>
+   Este aplicativo, ainda em desenvolvimento e disponível no GitHub, chama-se Food Products. Trata-se de uma plataforma de compras online voltada para mercados, permitindo que estes cadastrem seus produtos e realizem vendas pela internet. Os usuários têm acesso a todos os produtos do mercado, podendo montar suas compras, adicionando ou removendo itens do carrinho. Ao finalizar a compra, o usuário pode enviar o pedido diretamente para o WhatsApp do estabelecimento, contendo todas as informações relevantes sobre a compra. Assim, a entrega será programada e efetuada após a confirmação do pedido. Este aplicativo visa facilitar o processo de compra e venda, proporcionando uma experiência prática e eficiente para ambas as partes envolvidas.
 
-This project is a starting point for a Flutter application.
+</p>
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
+<h2>🛠️ Tecnologias Utilizadas no Projeto</h2>
+  - Flutter: 3.16.0
+  - Dart: 3.2.0
+  - vsCode: 1.75.0
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+---
+
+
+<h2>🛠️ Funcionalidades e Tecnologias Estudadas</h2>
+
+<p>
+Firebase Cloud Firestore:
+
+Armazenamento de Mensagens: Utilizando o Firestore para armazenar e recuperar mensagens em tempo real. Cada mensagem pode conter informações como remetente, conteúdo, data e hora.
+Coleções e Documentos: Organizando as mensagens em coleções e documentos para facilitar a consulta e a recuperação eficiente de dados.
+
+Firebase Auth:
+
+Autenticação de Usuários: Utilizando o Firebase Auth para autenticar usuários no aplicativo de chat. Isso garante que apenas usuários autenticados possam enviar e receber mensagens, protegendo a privacidade e a segurança da comunicação.
+
+Provider e Arquitetura MVC:
+
+Gerenciamento de Estado com Provider: Implementação do Provider para gerenciamento eficiente do estado da aplicação. Isso inclui o estado da lista de mensagens, o estado de autenticação do usuário e outros estados relevantes para a experiência do usuário.
+Arquitetura MVC (Model-View-Controller): Organizando o código em um padrão de arquitetura MVC para separar claramente as responsabilidades. O modelo (Model) representa os dados e a lógica de negócios, a visão (View) lida com a interface do usuário, e o controlador (Controller) gerencia a interação entre o modelo e a visão.
+   </p>
+
+<h2>🤔 Como usar</h2>
+
+   ```
+   Configure o ambiente de desenvolvimento na sua máquina:
+   https://flutter.dev/docs/get-started/install
+
+   - Clone o repositório:
+   $ git clone https://github.com/MateusLucasDaSilva/chat_message
+
+   - Entre no diretório:
+   $ cd Dart_Week_Ed9
+
+   - Instale as dependências:
+   $ flutter pub get
+
+   - Execute:
+   $ flutter run
+   ```
+
+---
+
+
+<h2>💪 Como contribuir</h2>
+
+   ```
+   - Fork o projeto 
+
+   - Cria uma nova branch com suas mudanças:
+   $ git checkout -b my-feature
+
+   - Salve suas mudanças e faça uma mensagem de commit message sobre suas alterações:
+   $ git commit -m "feature: My new feature"
+
+   - Envie suas mudanças:
+   $ git push origin my-feature
+   ```
+
+---
+
