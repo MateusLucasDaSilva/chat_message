@@ -33,7 +33,7 @@ Firebase Auth:
 
 -Autenticação de Usuários: Utilizando o Firebase Auth para autenticar usuários no aplicativo de chat. Isso garante que apenas usuários autenticados possam enviar e receber mensagens, protegendo a privacidade e a segurança da comunicação.
 
-<h5>Provider e Arquitetura MVC: </h5>
+<h4>Provider e Arquitetura MVC: </h4>
 
 -Gerenciamento de Estado com Provider: Implementação do Provider para gerenciamento eficiente do estado da aplicação. Isso inclui o estado da lista de mensagens, o estado de autenticação do usuário e outros estados relevantes para a experiência do usuário.
 
