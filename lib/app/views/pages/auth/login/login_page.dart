@@ -10,10 +10,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController emailEC =
-      TextEditingController(text: 'mateuslukas505@gmail.com');
-  final TextEditingController passwordEC =
-      TextEditingController(text: 'M@teus123');
+  final TextEditingController emailEC = TextEditingController();
+  final TextEditingController passwordEC = TextEditingController();
 
   @override
   void dispose() {

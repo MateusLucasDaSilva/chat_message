@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class UserModel {
@@ -23,9 +21,4 @@ class UserModel {
       email: map['email'] != null ? map['email'] as String : null,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory UserModel.fromJson(Map<String, dynamic> json) =>
-      UserModel.fromMap(json);
 }

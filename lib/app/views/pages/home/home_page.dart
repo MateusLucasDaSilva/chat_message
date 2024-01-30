@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   void getListeners(List<UserModel> result) {
     for (var e in result) {
-      final result = chat.listenChat(receiverId: e.uid);
+      final result = chat.listenChatRoom(receiverId: e.uid);
       listenChatMap[e.uid] = result;
     }
   }

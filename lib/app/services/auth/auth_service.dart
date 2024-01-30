@@ -2,7 +2,7 @@ import 'package:chat_message/app/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
-class AuthService extends ChangeNotifier {
+class AuthService {
   static AuthService? _instance;
 
   AuthService._();
