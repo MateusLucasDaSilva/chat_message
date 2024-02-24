@@ -50,7 +50,7 @@
    $ git clone https://github.com/MateusLucasDaSilva/chat_message
 
    - Entre no diretório:
-   $ cd Dart_Week_Ed9
+   $ cd chat_message
 
    - Instale as dependências:
    $ flutter pub get
